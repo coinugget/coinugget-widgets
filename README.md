@@ -42,11 +42,13 @@ Signals are evaluated on **closed candles** for Binance, Bybit and MEXC (perpetu
 The easiest way is the [builder](https://widget.coinugget.com). It produces code like this:
 
 ```html
-<iframe src="https://widget.coinugget.com/coin-signals.html?bg=transparent&theme=auto&coin=ETH" loading="lazy" width="260" height="420" frameborder="0" scrolling="no"></iframe>
-<div style="width:260px;text-align:right;margin-top:2px"><a href="https://coinugget.com?utm_source=widget&amp;utm_medium=embed&amp;utm_campaign=coin-signals&amp;utm_content=attribution" target="_blank" rel="nofollow noopener" style="font-size:10px;color:#64748b;text-decoration:none;font-family:sans-serif">coinugget.com</a></div>
+<div style="width:260px;max-width:100%">
+<iframe src="https://widget.coinugget.com/coin-signals.html?bg=transparent&theme=auto&coin=ETH" loading="lazy" width="260" height="420" frameborder="0" scrolling="no" style="display:block;max-width:100%"></iframe>
+<div style="text-align:right;margin-top:2px"><a href="https://coinugget.com?utm_source=widget&amp;utm_medium=embed&amp;utm_campaign=coin-signals&amp;utm_content=attribution" target="_blank" rel="nofollow noopener" style="font-size:10px;color:#64748b;text-decoration:none;font-family:sans-serif">coinugget.com</a></div>
+</div>
 ```
 
-Paste it into your page's HTML. That's it.
+Paste it into your page's HTML. That's it. The outer `div` keeps the widget and its link together and lets the widget shrink on narrow screens.
 
 ### URL parameters
 
@@ -58,7 +60,7 @@ Paste it into your page's HTML. That's it.
 | `lang` | `en ko ja zh es pt fr de it nl ru tr ar hi id th vi` | `lang=ja` |
 | `coin` | coin symbol (Coin Signals, Trend Check, Mini Chart) | `coin=SOL` |
 | `ex`, `m` | `binance` / `bybit` / `mexc`, `perp` / `spot` (signal widgets) | `ex=bybit&m=spot` |
-| `tf` | starting timeframe `15m` `1h` `4h` `1d` `1w` | `tf=4h` |
+| `tf` | starting timeframe `15m` `1h` `4h` `1d` `1w` (Mini Chart: up to `1d`) | `tf=4h` |
 | `signal` | signal id for Signal Scanner | `signal=sr_flip_support` |
 | `tfs` | timeframe set for the ticker | `tfs=15m,1h,4h` |
 | `limit` | number of coins in Signal Scanner (3–15) | `limit=10` |
@@ -78,7 +80,7 @@ Paste it into your page's HTML. That's it.
 - **WordPress**: add a *Custom HTML* block and paste the code. Saving an iframe needs the `unfiltered_html` capability (usually administrators). If the widget disappears after saving, ask your site admin.
 - **Other site builders**: use their custom code or embed block. Some free plans don't allow iframes.
 - **Phones**: keep the width at 300px or less. The default 260px fits phone screens. The ticker is always full width.
-- **Platforms that don't allow iframes** (for example Medium, Substack, Telegram, Discord, X, email): share a screenshot and a link instead. For Telegram and Discord there are free market panel bots: [coinugget.com/bots](https://coinugget.com/bots).
+- **Platforms that don't allow iframes** (for example Medium, Substack, Naver Blog, Telegram, Discord, X, email): share a screenshot and a link instead. For Telegram and Discord there are free market panel bots: [coinugget.com/bots](https://coinugget.com/bots).
 - Widgets run in their own iframe, so they don't change your page's code. Signal widgets pause updates while the reader's tab is hidden.
 
 ---
