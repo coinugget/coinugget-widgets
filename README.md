@@ -1,90 +1,105 @@
 # Coinugget Widgets
 
-Free embeddable crypto widgets for any website or blog. Live data, no API key, no sign-up required.
+Free embeddable crypto widgets for any website or blog — live prices and chart signals. No API key, no sign-up.
 
-**[Live Demo & Widget Builder](https://widget.coinugget.com)**
+**[Widget Builder & Live Preview → widget.coinugget.com](https://widget.coinugget.com)**
 
----
-
-## Available Widgets
-
-| Widget | Description | Size |
-|--------|------------|------|
-| **Major Markets** | Live prices for BTC, ETH, XRP, indices, gold and more | 260x550 |
-| **Price Action** | Top coins by price change with up/down ranking | 260x420 |
-| **RSI Signals** | Overbought & oversold RSI signals across 500+ coins | 260x420 |
-| **Top Gainers** | Top 10 gainers by 24h change with RSI badge | 260x420 |
-| **Regional Premium** | Bitcoin premium vs Binance across 10 countries | 260x420 |
-| **Derivatives** | 24h liquidations, long/short ratio for major pairs | 260x420 |
+Pick a widget, set coin, exchange, size and colors, then click the code to copy it. The builder is available in 17 languages, and the copied code shows the widget in the language you picked.
 
 ---
 
-## Quick Start
+## Widgets (13)
 
-Copy and paste one line of code. That's it.
+### Market widgets
 
-**Major Markets**
+| Widget | What it shows | File |
+|---|---|---|
+| **Major Markets** | Prices and 24h change for major coins plus global indices, gold and oil | `top-coins-bar.html` |
+| **Price Action** | Coins with the biggest move vs. the previous candle (5m–1d) | `price-action.html` |
+| **RSI Signals** | RSI overbought (≥70) and oversold (≤30) coins (5m–1d) | `rsi-signals.html` |
+| **Top 10 Gainers** | 24h top 10 gainers with an RSI badge | `top-gainers.html` |
+| **Regional Premium** | Bitcoin premium across 10 regions | `regional-premium.html` |
+| **Derivatives** | 24h liquidations and long/short ratios | `derivatives.html` |
 
-    <iframe src="https://widget.coinugget.com/top-coins-bar.html" width="260" height="550" frameborder="0" scrolling="no"></iframe>
+### Chart signal widgets
 
-**Price Action**
+Signals are evaluated on **closed candles** for Binance, Bybit and MEXC (perpetual by default, spot with `m=spot`). Clicking a coin opens the same coin and timeframe in the free [Coinugget Pro Chart](https://coinugget.com/chart).
 
-    <iframe src="https://widget.coinugget.com/price-action.html" width="260" height="420" frameborder="0" scrolling="no"></iframe>
-
-**RSI Signals**
-
-    <iframe src="https://widget.coinugget.com/rsi-signals.html" width="260" height="420" frameborder="0" scrolling="no"></iframe>
-
-**Top Gainers**
-
-    <iframe src="https://widget.coinugget.com/top-gainers.html" width="260" height="420" frameborder="0" scrolling="no"></iframe>
-
-**Regional Premium**
-
-    <iframe src="https://widget.coinugget.com/regional-premium.html" width="260" height="420" frameborder="0" scrolling="no"></iframe>
-
-**Derivatives**
-
-    <iframe src="https://widget.coinugget.com/derivatives.html" width="260" height="420" frameborder="0" scrolling="no"></iframe>
-
----
-
-## Customization
-
-Adjust the size by changing `width` and `height` attributes. Minimum height is 420px.
-
-Dark theme is default. For light theme, add `?theme=light` to the URL:
-
-    <iframe src="https://widget.coinugget.com/rsi-signals.html?theme=light" width="260" height="420" frameborder="0" scrolling="no"></iframe>
+| Widget | What it shows | File |
+|---|---|---|
+| **Coin Signals** | Active signals for one coin on 15m · 1H · 4H · 1D · 1W | `coin-signals.html` |
+| **Trend Check** | Price above/below EMA 25 / 50 / 200 per timeframe, plus RSI | `trend-check.html` |
+| **Mini Chart** | Candles with EMA 25 / 50 and recent signal marks | `mini-chart.html` |
+| **Signal Scanner** | Coins currently matching one signal you pick (46 signal types) | `signal-scanner.html` |
+| **Signal Leaders** | Coins with the most bullish-side / bearish-side signals | `signal-leaders.html` |
+| **Signal Pulse** | Bullish vs. bearish signal counts per signal group | `signal-pulse.html` |
+| **New Signals Ticker** | One-line strip of signals that just fired (full width) | `signal-ticker.html` |
 
 ---
 
-## Features
+## Quick start
 
-- **Live data** — real-time updates via WebSocket, not static snapshots
-- **No API key** — just copy the iframe code
-- **No sign-up** — works immediately
-- **Dark & Light themes** — matches any site design
-- **Customizable size** — adjust width and height freely
-- **Responsive** — works on desktop and mobile
-- **Lightweight** — no external dependencies
+The easiest way is the [builder](https://widget.coinugget.com). It produces code like this:
+
+```html
+<iframe src="https://widget.coinugget.com/coin-signals.html?bg=transparent&theme=auto&coin=ETH" loading="lazy" width="260" height="420" frameborder="0" scrolling="no"></iframe>
+<div style="width:260px;text-align:right;margin-top:2px"><a href="https://coinugget.com?utm_source=widget&amp;utm_medium=embed&amp;utm_campaign=coin-signals&amp;utm_content=attribution" target="_blank" rel="nofollow noopener" style="font-size:10px;color:#64748b;text-decoration:none;font-family:sans-serif">coinugget.com</a></div>
+```
+
+Paste it into your page's HTML. That's it.
+
+### URL parameters
+
+| Parameter | Values | Example |
+|---|---|---|
+| `theme` | `auto` (follows the reader's light/dark setting), `dark`, `light` | `theme=auto` |
+| `bg` | `transparent` or a hex color without `#` | `bg=transparent` |
+| `accent`, `text`, `border` | hex colors without `#` | `accent=6d70f2` |
+| `lang` | `en ko ja zh es pt fr de it nl ru tr ar hi id th vi` | `lang=ja` |
+| `coin` | coin symbol (Coin Signals, Trend Check, Mini Chart) | `coin=SOL` |
+| `ex`, `m` | `binance` / `bybit` / `mexc`, `perp` / `spot` (signal widgets) | `ex=bybit&m=spot` |
+| `tf` | starting timeframe `15m` `1h` `4h` `1d` `1w` | `tf=4h` |
+| `signal` | signal id for Signal Scanner | `signal=sr_flip_support` |
+| `tfs` | timeframe set for the ticker | `tfs=15m,1h,4h` |
+| `limit` | number of coins in Signal Scanner (3–15) | `limit=10` |
+
+### Dark mode toggle on your site
+
+`theme=auto` already follows the reader's system setting. If your site switches light/dark with its own button, add this line once and the widgets will follow it:
+
+```html
+<script src="https://widget.coinugget.com/embed.js" defer></script>
+```
 
 ---
 
-## WordPress
+## Install notes
 
-A WordPress plugin is also available. Search for "Coinugget" in the WordPress plugin directory.
+- **WordPress**: add a *Custom HTML* block and paste the code. Saving an iframe needs the `unfiltered_html` capability (usually administrators). If the widget disappears after saving, ask your site admin.
+- **Other site builders**: use their custom code or embed block. Some free plans don't allow iframes.
+- **Phones**: keep the width at 300px or less. The default 260px fits phone screens. The ticker is always full width.
+- **Platforms that don't allow iframes** (for example Medium, Substack, Telegram, Discord, X, email): share a screenshot and a link instead. For Telegram and Discord there are free market panel bots: [coinugget.com/bots](https://coinugget.com/bots).
+- Widgets run in their own iframe, so they don't change your page's code. Signal widgets pause updates while the reader's tab is hidden.
+
+---
+
+## Notes
+
+- Signals describe chart patterns on closed candles. They are information, not investment advice.
+- Prices can differ slightly from other exchanges.
+- Free to embed today, no account needed. The Coinugget logo and link stay in the widget.
 
 ---
 
 ## Links
 
 - **Widget Builder**: [widget.coinugget.com](https://widget.coinugget.com)
-- **Main Site**: [coinugget.com](https://coinugget.com)
-- **Telegram Bot**: [@coinugget_bot](https://t.me/coinugget_bot)
+- **Pro Chart** (free): [coinugget.com/chart](https://coinugget.com/chart)
+- **Telegram & Discord bots**: [coinugget.com/bots](https://coinugget.com/bots)
+- **Main site**: [coinugget.com](https://coinugget.com)
 
 ---
 
 ## License
 
-MIT — free to use in any project.
+MIT — see [LICENSE](LICENSE). This repository contains documentation and embed examples. The widgets are served from widget.coinugget.com.
